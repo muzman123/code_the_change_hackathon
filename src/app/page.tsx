@@ -1,105 +1,261 @@
-import NavBar from "@/components/NavBar";
-import Image from "next/image";
+"use client";
+import Head from 'next/head';
+import Image from 'next/image';
+import NavBar from '@/components/NavBar';
+import 'flowbite';
 
 export default function Home() {
   return (
-    <>
-    <NavBar/>
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="bg-gray-50">
+      <Head>
+        <title>Asylum in Canada</title>
+        <meta
+          name="description"
+          content="Helping asylum seekers find a new home in Canada."
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+      {/* Navbar */}
+      <NavBar />
+
+      {/* Hero Section */}
+      <section
+        className="relative bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/hero-image.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative container mx-auto px-6 py-32 text-center text-white">
+          <h1 className="text-5xl font-bold">A New Home Awaits</h1>
+          <p className="mt-6 text-xl">
+            We help asylum seekers find hope and a new beginning in Canada.
+          </p>
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#about"
+            className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Learn More
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="container mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-center text-gray-800">
+          Our Mission
+        </h2>
+        <p className="mt-4 text-center text-gray-600">
+          Our web app is dedicated to assisting asylum seekers in finding safe
+          haven in Canada. Whether through sponsorship or the regular immigration
+          process, we provide resources and guidance every step of the way.
+        </p>
+      </section>
+
+      {/* Benefits Section */}
+      <section id="benefits" className="bg-gray-100 py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Benefits of Seeking Asylum in Canada
+          </h2>
+          <p className="mt-4 text-center text-gray-600">
+            Discover the opportunities and support awaiting you.
+          </p>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Benefit Card 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <Image
+                src="/images/benefit1.jpg"
+                alt="Safe and Welcoming Communities"
+                width={400}
+                height={160}
+                className="w-full h-40 object-cover rounded"
+              />
+              <h3 className="mt-6 text-xl font-semibold text-gray-800">
+                Safe and Welcoming Communities
+              </h3>
+              <p className="mt-4 text-gray-600">
+                Experience the warmth and hospitality of Canadian communities
+                that embrace diversity and inclusion.
+              </p>
+            </div>
+            {/* Benefit Card 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <Image
+                src="/images/benefit2.jpg"
+                alt="Access to Quality Healthcare"
+                width={400}
+                height={160}
+                className="w-full h-40 object-cover rounded"
+              />
+              <h3 className="mt-6 text-xl font-semibold text-gray-800">
+                Access to Quality Healthcare
+              </h3>
+              <p className="mt-4 text-gray-600">
+                Receive world-class medical care through Canada&apos;s universal
+                healthcare system.
+              </p>
+            </div>
+            {/* Benefit Card 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <Image
+                src="/images/benefit3.jpg"
+                alt="Educational Opportunities"
+                width={400}
+                height={160}
+                className="w-full h-40 object-cover rounded"
+              />
+              <h3 className="mt-6 text-xl font-semibold text-gray-800">
+                Educational Opportunities
+              </h3>
+              <p className="mt-4 text-gray-600">
+                Unlock your potential with access to excellent educational
+                institutions for all ages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ways to Come to Canada */}
+      <section id="ways" className="container mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-center text-gray-800">
+          Ways to Seek Asylum
+        </h2>
+        <p className="mt-4 text-center text-gray-600">
+          Find the path that&apos;s right for you.
+        </p>
+        <div className="mt-10 space-y-8">
+          {/* Way 1 */}
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2">
+              <Image
+                src="/images/private-sponsorship.jpg"
+                alt="Private Sponsorship"
+                width={600}
+                height={256}
+                className="w-full h-64 object-cover rounded"
+              />
+            </div>
+            <div className="md:w-1/2 md:pl-10 mt-6 md:mt-0">
+              <h3 className="text-2xl font-semibold text-gray-800">
+                Private Sponsorship
+              </h3>
+              <p className="mt-4 text-gray-600">
+                Learn how Canadian citizens and organizations can sponsor you,
+                providing support and assistance as you settle into your new
+                life.
+              </p>
+            </div>
+          </div>
+          {/* Way 2 */}
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 md:order-2">
+              <Image
+                src="/images/government-assisted.jpg"
+                alt="Government-Assisted Refugees"
+                width={600}
+                height={256}
+                className="w-full h-64 object-cover rounded"
+              />
+            </div>
+            <div className="md:w-1/2 md:pr-10 mt-6 md:mt-0 md:order-1">
+              <h3 className="text-2xl font-semibold text-gray-800">
+                Government-Assisted Refugees
+              </h3>
+              <p className="mt-4 text-gray-600">
+                Understand how the Canadian government can help you resettle,
+                providing essential services and support.
+              </p>
+            </div>
+          </div>
+          {/* Way 3 */}
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2">
+              <Image
+                src="/images/asylum-claim.jpg"
+                alt="Making an Asylum Claim"
+                width={600}
+                height={256}
+                className="w-full h-64 object-cover rounded"
+              />
+            </div>
+            <div className="md:w-1/2 md:pl-10 mt-6 md:mt-0">
+              <h3 className="text-2xl font-semibold text-gray-800">
+                Making an Asylum Claim
+              </h3>
+              <p className="mt-4 text-gray-600">
+                Find out how to make a refugee claim upon arrival in Canada and
+                the steps involved in the process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="bg-gray-100 py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Get in Touch
+          </h2>
+          <p className="mt-4 text-center text-gray-600">
+            We&apos;re here to help you with any questions you may have.
+          </p>
+          <div className="mt-10 max-w-lg mx-auto">
+            <form action="#" method="POST">
+              <div className="mb-6">
+                <label htmlFor="name" className="block text-gray-700">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full mt-2 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  required
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="email" className="block text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full mt-2 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  required
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-gray-700">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  className="w-full mt-2 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white">
+        <div className="container mx-auto px-6 py-6 text-center text-gray-600">
+          &copy; {new Date().getFullYear()} Asylum in Canada. All rights
+          reserved.
+        </div>
       </footer>
     </div>
-    </>
   );
 }
