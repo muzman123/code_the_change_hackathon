@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import {
   GoogleOAuthProvider,
@@ -17,7 +18,7 @@ interface DecodedToken {
   // Add any additional fields here as needed
 }
 
-function App() {
+function GoogleAuth() {
   const [user, setUser] = useState<CredentialResponse | null>(null); // State for the user response
   const [decodedToken, setDecodedToken] = useState<DecodedToken | null>(null); // State for decoded token
 
@@ -65,4 +66,4 @@ function App() {
   );
 }
 
-export default App;
+export default GoogleAuth;
