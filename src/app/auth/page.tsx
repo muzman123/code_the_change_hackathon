@@ -8,6 +8,8 @@ import {
   CredentialResponse,
 } from "@react-oauth/google";
 import {jwtDecode} from "jwt-decode";
+import { useRouter } from "next/navigation";
+
 
 const clientId =   "1013158826556-sl7ggkmc960eru1hv7fjdch52kunjfkt.apps.googleusercontent.com"; // Replace with your actual Google Client ID
 
@@ -20,6 +22,7 @@ interface DecodedToken {
 function GoogleAuth() {
   const [user, setUser] = useState<CredentialResponse | null>(null);
   const [decodedToken, setDecodedToken] = useState<DecodedToken | null>(null);
+  const router = useRouter();
 
   const onLoginSuccess = async (credentialResponse: CredentialResponse) => {
     console.log("LOGIN SUCCESS! Credential response:", credentialResponse);
@@ -50,6 +53,7 @@ function GoogleAuth() {
     } catch (error) {
       console.error("Token decoding or API call failed:", error);
     }
+    router.push('/dashboard');
   };
 
   const onLoginFailure = () => {
@@ -64,9 +68,13 @@ function GoogleAuth() {
   };
 
   return (
+    <div>
     <GoogleOAuthProvider clientId={clientId}>
-      <div>
-        <h1>Google Auth with React</h1>
+      <div className="max-w-xl mx-auto mt-[20vh] ">
+        <h1 className="text-4xl mb-9">Sign up with Google</h1>
+        <button className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded">
+          Login
+        </button>
         {user ? (
           <div>
             <p>Welcome, {decodedToken?.name || decodedToken?.email}</p>
@@ -75,8 +83,10 @@ function GoogleAuth() {
         ) : (
           <GoogleLogin onSuccess={onLoginSuccess} onError={onLoginFailure} />
         )}
+        
       </div>
     </GoogleOAuthProvider>
+    </div>
   );
 }
 

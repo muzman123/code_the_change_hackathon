@@ -27,13 +27,13 @@ export default function Home() {
         <div className="relative container mx-auto px-6 py-32 text-center text-white">
           <h1 className="text-5xl font-bold">A New Home Awaits</h1>
           <p className="mt-6 text-xl">
-            We help asylum seekers find hope and a new beginning in Canada.
+            Access an online resource for Asylum seekers in Canada
           </p>
           <a
-            href="#about"
+            href="/auth"
             className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded"
           >
-            Learn More
+            Get Started
           </a>
         </div>
       </section>
