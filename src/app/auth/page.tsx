@@ -9,6 +9,7 @@ import {
 } from "@react-oauth/google";
 import {jwtDecode} from "jwt-decode";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from 'next/navigation';
 
 
 const clientId =   "1013158826556-sl7ggkmc960eru1hv7fjdch52kunjfkt.apps.googleusercontent.com"; // Replace with your actual Google Client ID
@@ -24,18 +25,27 @@ function GoogleAuth() {
   const [decodedToken, setDecodedToken] = useState<DecodedToken | null>(null);
   const router = useRouter();
 
+  const [credentials, setCredentials] = useState<DecodedToken>({
+    name: "",
+    email: "",
+  });
+
   const onLoginSuccess = async (credentialResponse: CredentialResponse) => {
     console.log("LOGIN SUCCESS! Credential response:", credentialResponse);
     setUser(credentialResponse);
+   
 
     try {
       // Decode the JWT token
       const decoded = jwtDecode<DecodedToken>(credentialResponse.credential || "");
       setDecodedToken(decoded);
       console.log("Decoded token:", decoded);
+      const jsonString = JSON.stringify({ name: decoded.name, email: decoded.email });
+      const encodedData = encodeURIComponent(jsonString);
+
 
       // Check if the user exists in the database; if not, add them
-      if (decoded.email && decoded.name) {
+      /*if (decoded.email && decoded.name) {
         const response = await fetch("/api/users", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -49,11 +59,11 @@ function GoogleAuth() {
           const errorData = await response.json();
           console.error("Failed to check/create user:", errorData);
         }
-      }
+      }*/
+      router.push(`/dashboard?data=${encodedData}`);
     } catch (error) {
       console.error("Token decoding or API call failed:", error);
     }
-    router.push('/dashboard');
   };
 
   const onLoginFailure = () => {
